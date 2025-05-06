@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Posts on junlin</title>
-        <link>https://example.com/post/</link>
-        <description>Recent content in Posts on junlin</description>
+        <title>C&#43;&#43; on junlin</title>
+        <link>https://example.com/tags/c&#43;&#43;/</link>
+        <description>Recent content in C&#43;&#43; on junlin</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>junlin</copyright>
-        <lastBuildDate>Tue, 06 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 06 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/c++/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>C&#43;&#43;面向对象</title>
         <link>https://example.com/p/test-chinese/</link>
         <pubDate>Tue, 06 May 2025 00:00:00 +0000</pubDate>
@@ -108,14 +108,6 @@
 &lt;li&gt;提高性能：避免先默认初始化再赋值的额外开销。&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-        </item>
-        <item>
-        <title>今天，我的blog诞生了</title>
-        <link>https://example.com/p/%E4%BB%8A%E5%A4%A9%E6%88%91%E7%9A%84blog%E8%AF%9E%E7%94%9F%E4%BA%86/</link>
-        <pubDate>Tue, 06 May 2025 00:00:00 +0000</pubDate>
-        
-        <guid>https://example.com/p/%E4%BB%8A%E5%A4%A9%E6%88%91%E7%9A%84blog%E8%AF%9E%E7%94%9F%E4%BA%86/</guid>
-        <description></description>
         </item>
         
     </channel>
