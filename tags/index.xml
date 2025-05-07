@@ -7,20 +7,36 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>junlin</copyright>
-        <lastBuildDate>Tue, 06 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>C&#43;&#43;</title>
-        <link>https://example.com/tags/c&#43;&#43;/</link>
-        <pubDate>Tue, 06 May 2025 00:00:00 +0000</pubDate>
+        <lastBuildDate>Wed, 07 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Php</title>
+        <link>https://example.com/tags/php/</link>
+        <pubDate>Wed, 07 May 2025 00:00:00 +0000</pubDate>
         
-        <guid>https://example.com/tags/c&#43;&#43;/</guid>
+        <guid>https://example.com/tags/php/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Web</title>
+        <link>https://example.com/tags/web/</link>
+        <pubDate>Wed, 07 May 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://example.com/tags/web/</guid>
         <description></description>
         </item>
         <item>
         <title>编程语言</title>
         <link>https://example.com/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/</link>
-        <pubDate>Tue, 06 May 2025 00:00:00 +0000</pubDate>
+        <pubDate>Wed, 07 May 2025 00:00:00 +0000</pubDate>
         
         <guid>https://example.com/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>C&#43;&#43;</title>
+        <link>https://example.com/tags/c&#43;&#43;/</link>
+        <pubDate>Tue, 06 May 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://example.com/tags/c&#43;&#43;/</guid>
         <description></description>
         </item>
         

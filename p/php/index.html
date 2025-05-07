@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="现在学应该不会太晚？,,ԾㅂԾ,,">
+<title>php</title>
+
+<link rel='canonical' href='https://example.com/p/php/'>
+
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="php">
+<meta property='og:description' content="现在学应该不会太晚？,,ԾㅂԾ,,">
+<meta property='og:url' content='https://example.com/p/php/'>
+<meta property='og:site_name' content='junlin'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='编程语言' /><meta property='article:tag' content='php' /><meta property='article:tag' content='web' /><meta property='article:published_time' content='2025-05-07T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-05-07T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="php">
+<meta name="twitter:description" content="现在学应该不会太晚？,,ԾㅂԾ,,">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/touxiang_hu_f3f845bd553830e3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🚀</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">junlin</a></h1>
+            <h2 class="site-description">什么时候才能成为高手啊</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/junlin-233'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#基础项">基础项</a></li>
+    <li><a href="#函数安全">函数安全</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" >
+                编程语言
+            </a>
+        
+            <a href="/categories/web/" >
+                Web
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/php/">php</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            现在学应该不会太晚？,,ԾㅂԾ,,
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">May 07, 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 5 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="基础项">基础项
+</h2><p><strong>比较</strong></p>
+<p>==  只比较值，不比较类型</p>
+<p>=== 除了比较值，也比较类型</p>
+<pre><code>0 == false: bool(true)
+
+0 === false: bool(false)
+</code></pre>
+<p><strong>输出</strong></p>
+<ul>
+<li>
+<p><code>echo</code> - 可以输出一个或多个字符串</p>
+</li>
+<li>
+<p><code>print</code>- 只允许输出一个字符串，返回值总为 1</p>
+</li>
+</ul>
+<p><strong>数组</strong></p>
+<p><code>array()</code> 函数用于创建数组</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$cars</span><span class="o">=</span><span class="k">array</span><span class="p">(</span><span class="s2">&#34;Hello&#34;</span><span class="p">,</span><span class="s2">&#34;CTF&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">echo</span> <span class="s2">&#34;I like &#34;</span> <span class="o">.</span> <span class="nv">$cars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&#34; &#34;</span> <span class="o">.</span> <span class="nv">$cars</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&#34;.&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="cp">?&gt;</span><span class="err">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>魔术常量</strong></p>
+<p>行如 <code>__FILE__</code> 这样的 <code>__XXX__</code> 预定义常量，被称为魔术常量。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="no">__FILE__</span> <span class="c1">//返回文件的完整路径和文件名
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">highlight_file</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">);</span> <span class="c1">//代码高亮的显示当前文件内容
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>表单数据</strong></p>
+<p>$_GET —— 接受 GET 请求传递的参数。</p>
+<p>示例: <code>example.com/index.php?book=HELLOCTF</code>，你可以使用 <code>$_GET['book'] </code>来获取相应的值。</p>
+<p>$_POST —— 接受 POST 请求传递的参数。</p>
+<p>示例：对 <code>example.com/index.php</code> 进行 POST 传参，参数名为 book 内容为 HelloCTF，你可以使用 <code>$_POST['book'] </code> 来获取相应的值。</p>
+<p>$_REQUEST —— 接受 GET 和 POST 以及 Cookie 请求传递的参数。
+示例：</p>
+<ul>
+<li>
+<p>如果你通过 URL 传递了一个参数 <code>example.com/index.php?key=value_from_get</code>，你可以通过<code>$_REQUEST['key']</code> 获取这个值。</p>
+</li>
+<li>
+<p>如果你通过 POST 方法提交了一个表单，其中有一个名为 key 的字段且其值为<code>value_from_post</code>，你也可以通过 <code>$_REQUEST['key']</code> 获取这个值。</p>
+</li>
+<li>
+<p>同时，如果你设置了一个名为 key 的 cookie，其值为 value_from_cookie，你还是可以使用 $_REQUEST[&lsquo;key&rsquo;] 来获取这个值。</p>
+</li>
+</ul>
+<p>懒人必备^o^/</p>
+<p><strong>函数</strong></p>
+<p>一般来说名字≈功能，所以理解大于记忆</p>
+<ul>
+<li>
+<p><code>assert()</code> : 用于调试，检查一个条件是否为 true。</p>
+</li>
+<li>
+<p><code>unserialize()</code> : 将一个已序列化的字符串转换回 PHP 的值。例如: <code>$array = unserialize($serializedStr)</code> 可以将一个序列化的数组字符串转换为数组。</p>
+</li>
+<li>
+<p><code>mysql_query()</code>: 发送一个 MySQL 查询。</p>
+</li>
+</ul>
+<h2 id="函数安全">函数安全
+</h2><p><strong>常见绕过</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$a</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="nx">is_numeric</span><span class="p">(</span><span class="nv">$a</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">exit</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$a</span> <span class="o">==</span> <span class="mi">404</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">echo</span> <span class="s2">&#34;flag&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>想要绕过可以在数字前面或者后面加上 <code>%0a %0b %0c %0d %09</code></p>
+<p>例如: <code>$a=&quot;404%0a&quot;</code></p>
+<p><strong>弱类型比较</strong></p>
+<p><strong>strcmp()</strong></p>
+<p>当 strcmp 比较出错后，会返回 null，null 则为 0 。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nv">$flag</span> <span class="o">=</span> <span class="s1">&#39;flag{123}&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="nx">strcmp</span><span class="p">(</span><span class="nv">$flag</span><span class="p">,</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;str&#39;</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">echo</span> <span class="nv">$flag</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">echo</span> <span class="s2">&#34;Out!&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>为了使 strcmp 比较出错，可以传入一个数组</p>
+<p>Payload: ?str[]</p>
+<p><strong>is_switch()</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nv">$a</span> <span class="o">=</span> <span class="s2">&#34;233a&#34;</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">$flag</span> <span class="o">=</span> <span class="s2">&#34;flag{Give you FLAG}&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">switch</span> <span class="p">(</span><span class="nv">$a</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">echo</span> <span class="s2">&#34;No Flag&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">echo</span> <span class="s2">&#34;No Flag&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="mi">233</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">echo</span> <span class="nv">$flag</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">default</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$a</span> <span class="o">=</span> <span class="mi">233</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">echo</span> <span class="s2">&#34;Haha...&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>case 会自动将字符转换成数值,即遇到非数字就停止</p>
+<p><strong>md5()</strong></p>
+<p>md5 在处理哈希字符串的时候，如果 md5 编码后的哈希值时 0e （科学计数法）开头的，都一律解释为 0</p>
+<p>例如:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nv">$flag</span> <span class="o">=</span> <span class="s2">&#34;flag{THIS_IS_REAL_FLAG}&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$v1</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;gat&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$v2</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;tag&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="nv">$v1</span> <span class="o">!=</span> <span class="nv">$v2</span> <span class="o">&amp;&amp;</span> <span class="nx">md5</span><span class="p">(</span><span class="nv">$v1</span><span class="p">)</span> <span class="o">==</span> <span class="nx">md5</span><span class="p">(</span><span class="nv">$v2</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">echo</span> <span class="nv">$flag</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">echo</span> <span class="s2">&#34;Out!&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>此时找到两个不相同但md5编码后以0e开头的字符串即可</p>
+<p>如果是这样:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nv">$flag</span> <span class="o">=</span> <span class="s2">&#34;flag{THIS_IS_REAL_FLAG}&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$str1</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;gat&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$str2</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;tag&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="nx">md5</span><span class="p">(</span><span class="nv">$str1</span><span class="p">)</span> <span class="o">===</span> <span class="nx">md5</span><span class="p">(</span><span class="nv">$str2</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">echo</span> <span class="nv">$flag</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>用上述 0e 方法自然是不可行的（注意：<code>===</code> ），这时候就得使用数组来绕过了，如果传入一个数组的值，会报出错误（md5 只能使用字符串），报错后就相当于绕过 <code>===</code> 这个条件了</p>
+<p>注: 在 PHP 8.0.0 时，该方法行不通了</p>
+<p>如果遇到不能传入数组，只能传入字符串的时候，如下例</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nv">$flag</span> <span class="o">=</span> <span class="s2">&#34;flag{THIS_IS_REAL_FLAG}&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$str1</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;gat&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$str2</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;tag&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="p">((</span><span class="nx">string</span><span class="p">)</span><span class="nv">$str1</span> <span class="o">!==</span> <span class="p">(</span><span class="nx">string</span><span class="p">)</span><span class="nv">$str2</span> <span class="o">&amp;&amp;</span> <span class="nx">md5</span><span class="p">(</span><span class="nv">$str1</span><span class="p">)</span><span class="o">===</span><span class="nx">md5</span><span class="p">(</span><span class="nv">$str2</span><span class="p">)){</span>
+</span></span><span class="line"><span class="cl">    <span class="k">echo</span> <span class="s2">&#34;flag{THIS_IS_REAL_FLAG}&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">echo</span> <span class="s2">&#34;Out!&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这时候就得需要 md5 碰撞，上面判断条件的意思是，str1 和 str2 内容必须不同，但是 md5 必须相同(详细方法待整理)</p>
+<p><strong>sha1()</strong></p>
+<p>sha1 的参数不能为数组，传入数组会返回 NULL</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nv">$flag</span> <span class="o">=</span> <span class="s2">&#34;flag{Chain!}&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$get</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;get&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$teg</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;teg&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="nv">$get</span> <span class="o">!=</span> <span class="nv">$teg</span> <span class="o">&amp;&amp;</span> <span class="nx">sha1</span><span class="p">(</span><span class="nv">$get</span><span class="p">)</span> <span class="o">===</span> <span class="nx">sha1</span><span class="p">(</span><span class="nv">$teg</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#if ($get != $teg &amp;&amp; sha1($get) == sha1($teg)) {
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">echo</span> <span class="nv">$flag</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">echo</span> <span class="s1">&#39;Out!&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Payload: ?get[]=&amp;teg[]=1</p>
+<p><strong>变量覆盖漏洞</strong></p>
+<p>环境得先开启</p>
+<pre><code>  register_globals=ON  //此时传递的参数会自动注册为全局变量
+</code></pre>
+<p>最简单的一种就是我们传入参数例如 <code>?id=1</code> 把原来id的值给替换</p>
+<p><strong>$$</strong></p>
+<p>类似于c++的指针,例如:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nv">$a</span> <span class="o">=</span> <span class="s2">&#34;A&#34;</span><span class="p">;</span> <span class="c1">#
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$b</span> <span class="o">=</span> <span class="s2">&#34;B&#34;</span><span class="p">;</span> <span class="c1"># 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">echo</span> <span class="nv">$a</span> <span class="o">.</span> <span class="s2">&#34;&lt;br&gt;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">echo</span> <span class="nv">$b</span> <span class="o">.</span> <span class="s2">&#34;&lt;br&gt;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">foreach</span> <span class="p">(</span><span class="nv">$_GET</span> <span class="k">as</span> <span class="nv">$key</span> <span class="o">=&gt;</span> <span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$$key</span> <span class="o">=</span> <span class="nv">$value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">echo</span> <span class="nv">$a</span> <span class="o">.</span> <span class="s2">&#34;&lt;br&gt;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">echo</span> <span class="nv">$b</span> <span class="o">.</span> <span class="s2">&#34;&lt;br&gt;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">echo</span> <span class="nv">$key</span> <span class="o">.</span> <span class="s2">&#34;&lt;br&gt;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">echo</span> <span class="nv">$$key</span> <span class="o">.</span> <span class="s2">&#34;&lt;br&gt;&#34;</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>传入</p>
+<pre><code>    ?a=I'm A&amp;b=I'm B   
+</code></pre>
+<p>后,得到</p>
+<pre><code> A
+ B
+ I'm A
+ I'm B
+ b
+ I'm B
+</code></pre>
+<p>这里使用了 foreach 来遍历数组的值,遍历 <code>I'm B</code> 到这一项,后面的代码表示把数组的键名b赋值给key,数组的键值赋值给value,并且key可以指向value</p>
+<p>就当成指针理解吧[]`(￣▽￣)&rsquo;*</p>
+<p><strong>extract()</strong></p>
+<p>描述：extract(array,flags,prefix)</p>
+<p>功能​：将数组元素动态转换为变量，常用于处理表单数据（如 $_POST、$_GET）或配置数组。</p>
+<p>flags:
+可选，控制冲突处理方式（默认 EXTR_OVERWRITE) 常用值：</p>
+<ul>
+<li>EXTR_OVERWRITE：如果有冲突,覆盖已有变量</li>
+<li>EXTR_SKIP：跳过冲突</li>
+<li>EXTR_PREFIX_ALL：如果有冲突,为所有变量添加前缀</li>
+</ul>
+<p>prefix: 可选，仅在指定flags为前缀模式时有效，用于生成变量名前缀。</p>
+<p><strong>parse_str()</strong></p>
+<p>描述：parse_str(str) 用于将字符串解析成多个变量，没有返回值。简而言之,就是你输入(&ldquo;a=1&amp;b=2&rdquo;)它会自动地生成a,b两个变量</p>
+<p><strong>伪协议</strong></p>
+<p><strong>php://filter</strong></p>
+<pre><code>php://filter/read or write=/resource=数据流
+</code></pre>
+<ul>
+<li>
+<p>resource=&lt; 要过滤的数据流&gt; （必须） 它指定了你要筛选过滤的数据流</p>
+</li>
+<li>
+<p>read和write可选对应对筛选列表的操作</p>
+</li>
+</ul>
+<p>常用过滤器convert.base64</p>
+<ul>
+<li>编码 convert.base64-encode</li>
+<li>解码 convert.base64-decode</li>
+</ul>
+<p>例如</p>
+<pre><code>php://filter/read=convert.base64-encode/resource=files.txt
+</code></pre>
+<p>更多的可以看P神的<a class="link" href="https://www.leavesongs.com/PENETRATION/php-filter-magic.html"  target="_blank" rel="noopener"
+    >谈一谈php://filter的妙用</a></p>
+<p><strong>php://input</strong></p>
+<p>如果 html 表单编码设置为&quot;multipart/form-data&quot;,请求是无效的。 一般在 CTF 中用于执行 php 代码（一般在bp里使用）</p>
+<p>需要在php 中设置 allow_url_include = On</p>
+<p><strong>zip:// &amp; bzip2 &amp; zlib://</strong></p>
+<p>需要:</p>
+<ul>
+<li>
+<p>allow_url_fopen: on</p>
+</li>
+<li>
+<p>allow_url_include: on</p>
+</li>
+</ul>
+<p>zip的一般格式:</p>
+<pre><code>zip://[压缩文件绝对路径]%23[压缩文件内的子文件名]（#编码为%23）
+</code></pre>
+<p><strong>file://</strong></p>
+<p>和zip一样需要打开_url_,用于访问本地文件系统，在 CTF 中通常用来读取本地文件</p>
+<p>本文参考资料:<a class="link" href="https://hello-ctf.com/home/"  target="_blank" rel="noopener"
+    >Hello CTF</a> (其实就是摘抄啦o(<em>￣▽￣</em>)ブ)</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a>
+        
+            <a href="/tags/php/">Php</a>
+        
+            <a href="/tags/web/">Web</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/test-chinese/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">C&#43;&#43;面向对象</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 junlin
+    </section>
+    
+    <section class="powerby">
+        
+            生活由投入其中的每一天构成 <br/>
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
