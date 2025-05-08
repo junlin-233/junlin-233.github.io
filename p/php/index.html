@@ -247,6 +247,7 @@
   <ol>
     <li><a href="#基础项">基础项</a></li>
     <li><a href="#函数安全">函数安全</a></li>
+    <li><a href="#序列化及反序列化">序列化及反序列化</a></li>
   </ol>
 </nav>
         </div>
@@ -319,7 +320,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 5 分钟
+                    阅读时长: 7 分钟
                 </time>
             </div>
         
@@ -697,8 +698,131 @@
 </code></pre>
 <p><strong>file://</strong></p>
 <p>和zip一样需要打开_url_,用于访问本地文件系统，在 CTF 中通常用来读取本地文件</p>
+<h2 id="序列化及反序列化">序列化及反序列化
+</h2><ul>
+<li>
+<p>序列化 是将 PHP 对象转换为字符串的过程，可以使用 <code>serialize()</code> 函数来实现。该函数将对象的状态以及它的类名和属性值编码为一个字符串。序列化后的字符串可以存储在文件中，存储在数据库中，或者通过网络传输到其他地方。</p>
+</li>
+<li>
+<p>反序列化 是将序列化后的字符串转换回 PHP 对象的过程，可以使用 <code>unserialize()</code> 函数来实现。该函数会将序列化的字符串解码，并将其转换回原始的 PHP 对象。</p>
+</li>
+</ul>
+<p>普通对象注意 <code>protected</code> 和 <code>private</code> 类型的变量中都加入了不可见字符：</p>
+<p>如果是 <code>protected</code> 变量，则会在变量名前加上 <code>\x00*\x00</code></p>
+<p>如果是 <code>private</code> 变量，则会在变量名前加上 <code>\x00类名</code></p>
+<p>一般我们在输出的时候都会先编码后输出</p>
+<p>自定义类时，例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">function</span> <span class="nf">serialize</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">serialize</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;email&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">email</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;phoneNumber&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">phoneNumber</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="p">]);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>此时输出的格式如图：</p>
+<p><img src="https://hello-ctf.com/hc-web/assets/202305121505237.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p><em>by hello ctf</em></p>
+<p>其它一些标识，一般都是英文首字母</p>
+<ul>
+<li>
+<p>b:boolean bool 值</p>
+</li>
+<li>
+<p>C:custom object 自定义对象序列化</p>
+</li>
+<li>
+<p>d:double 小数</p>
+</li>
+<li>
+<p>i:integer 整数</p>
+</li>
+<li>
+<p>O:Object 对象</p>
+</li>
+<li>
+<p>r:reference 对象引用 &amp;&amp; R:pointer reference 指针引用</p>
+</li>
+<li>
+<p>S:encoded string</p>
+</li>
+<li>
+<p>N:null NULL 值</p>
+</li>
+</ul>
+<p><strong>魔术方法</strong></p>
+<p>在 PHP 的序列化中，魔术方法（Magic Methods）是一组特殊的方法，这些方法以双下划线（__）作为前缀，可以在特定的序列化阶段触发从而使开发者能够进一步的控制 序列化 / 反序列化 的过程。</p>
+<p>一般在题目中常见的几个方法如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"> <span class="nx">__wakeup</span><span class="p">()</span> <span class="c1">//------ 执行unserialize()时，先会调用这个函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="nx">__sleep</span><span class="p">()</span> <span class="c1">//------- 执行serialize()时，先会调用这个函数，只能返回数组
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="nx">__construct</span><span class="p">()</span> <span class="c1">//------- 适合在使用对象之前做一些初始化工作
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="nx">__destruct</span><span class="p">()</span> <span class="c1">//---- 某个对象的所有引用都被删除或者当对象被显式销毁时执行
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="nx">__call</span><span class="p">()</span> <span class="c1">//-------- 在对象上下文中调用不可访问的方法时触发
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="nx">__callStatic</span><span class="p">()</span> <span class="c1">//-- 在静态上下文中调用不可访问的方法时触发
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="nx">__get</span><span class="p">()</span> <span class="c1">//--------- 用于从不可访问的属性读取数据或者不存在这个键都会调用此法
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="nx">__set</span><span class="p">()</span> <span class="c1">//--------- 用于将数据写入不可访问的属性
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="nx">__isset</span><span class="p">()</span> <span class="c1">//------- 在不可访问的属性上调用isset()或empty()触发
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="nx">__unset</span><span class="p">()</span> <span class="c1">//------- 在不可访问的属性上使用unset()时触发
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="nx">__toString</span><span class="p">()</span> <span class="c1">//---- 把类当作字符串使用时触发
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="nx">__invoke</span><span class="p">()</span> <span class="c1">//------ 当尝试将对象调用为函数时触发
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>详细可参考：<a class="link" href="https://www.php.net/manual/zh/language.oop5.magic.php"  target="_blank" rel="noopener"
+    >PHP:魔术方法 - Manual</a></p>
+<p><strong>属性重载</strong></p>
+<ul>
+<li>在给不可访问（protected 或 private）或不存在的属性赋值时，__set() 会被调用。</li>
+<li>读取不可访问（protected 或 private）或不存在的属性的值时，__get() 会被调用。</li>
+<li>当对不可访问（protected 或 private）或不存在的属性调用 isset() 或 empty() 时，__isset() 会被调用。</li>
+<li>当对不可访问（protected 或 private）或不存在的属性调用 unset() 时，__unset() 会被调用。</li>
+</ul>
+<p>详细可参考：<a class="link" href="https://www.php.net/manual/zh/language.oop5.overloading.php#object.set"  target="_blank" rel="noopener"
+    >PHP:重载 - Manual</a></p>
 <p>本文参考资料:<a class="link" href="https://hello-ctf.com/home/"  target="_blank" rel="noopener"
-    >Hello CTF</a> (其实就是摘抄啦o(<em>￣▽￣</em>)ブ)</p>
+    >Hello CTF</a> (其实就是摘抄啦)</p>
+<p><img src="https://wx3.sinaimg.cn/mw1024/008xfgx9gy1hw1bqfxaxtg30cy0cy0wx.gif"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
 
 </section>
 
