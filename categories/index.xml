@@ -2,41 +2,41 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Categories on junlin</title>
-        <link>/categories/</link>
+        <link>https://example.com/categories/</link>
         <description>Recent content in Categories on junlin</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>junlin</copyright>
-        <lastBuildDate>Thu, 08 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 08 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/categories/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Wp</title>
-        <link>/categories/wp/</link>
+        <link>https://example.com/categories/wp/</link>
         <pubDate>Thu, 08 May 2025 00:00:00 +0000</pubDate>
         
-        <guid>/categories/wp/</guid>
+        <guid>https://example.com/categories/wp/</guid>
         <description></description>
         </item>
         <item>
         <title>Web</title>
-        <link>/categories/web/</link>
+        <link>https://example.com/categories/web/</link>
         <pubDate>Wed, 07 May 2025 00:00:00 +0000</pubDate>
         
-        <guid>/categories/web/</guid>
+        <guid>https://example.com/categories/web/</guid>
         <description></description>
         </item>
         <item>
         <title>编程语言</title>
-        <link>/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/</link>
+        <link>https://example.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/</link>
         <pubDate>Wed, 07 May 2025 00:00:00 +0000</pubDate>
         
-        <guid>/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/</guid>
+        <guid>https://example.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/</guid>
         <description></description>
         </item>
         <item>
         <title>C&#43;&#43;</title>
-        <link>/categories/c&#43;&#43;/</link>
+        <link>https://example.com/categories/c&#43;&#43;/</link>
         <pubDate>Tue, 06 May 2025 00:00:00 +0000</pubDate>
         
-        <guid>/categories/c&#43;&#43;/</guid>
+        <guid>https://example.com/categories/c&#43;&#43;/</guid>
         <description></description>
         </item>
         

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>编程语言 on junlin</title>
-        <link>/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/</link>
+        <link>https://example.com/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/</link>
         <description>Recent content in 编程语言 on junlin</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>junlin</copyright>
-        <lastBuildDate>Wed, 07 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 07 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>php</title>
-        <link>/p/php/</link>
+        <link>https://example.com/p/php/</link>
         <pubDate>Wed, 07 May 2025 00:00:00 +0000</pubDate>
         
-        <guid>/p/php/</guid>
+        <guid>https://example.com/p/php/</guid>
         <description>&lt;h2 id=&#34;基础项&#34;&gt;基础项
 &lt;/h2&gt;&lt;p&gt;&lt;strong&gt;比较&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;==  只比较值，不比较类型&lt;/p&gt;
@@ -504,7 +504,7 @@
     &gt;PHP:重载 - Manual&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;本文参考资料:&lt;a class=&#34;link&#34; href=&#34;https://hello-ctf.com/home/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Hello CTF&lt;/a&gt; (其实就是摘抄啦)&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/0be0a05bffc7420aa292adf31d54bd65.gif&#34;
+&lt;p&gt;&lt;img src=&#34;https://example.com/0be0a05bffc7420aa292adf31d54bd65.gif&#34;
 	
 	
 	
@@ -518,10 +518,10 @@
         </item>
         <item>
         <title>C&#43;&#43;面向对象</title>
-        <link>/p/test-chinese/</link>
+        <link>https://example.com/p/test-chinese/</link>
         <pubDate>Tue, 06 May 2025 00:00:00 +0000</pubDate>
         
-        <guid>/p/test-chinese/</guid>
+        <guid>https://example.com/p/test-chinese/</guid>
         <description>&lt;h2 id=&#34;关于变量&#34;&gt;关于变量
 &lt;/h2&gt;&lt;p&gt;&lt;strong&gt;常量&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;

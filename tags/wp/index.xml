@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Wp on junlin</title>
-        <link>/tags/wp/</link>
+        <link>https://example.com/tags/wp/</link>
         <description>Recent content in Wp on junlin</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>junlin</copyright>
-        <lastBuildDate>Thu, 08 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="/tags/wp/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 08 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/wp/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>一些题目的wp</title>
-        <link>/p/%E4%B8%80%E4%BA%9B%E9%A2%98%E7%9B%AE%E7%9A%84wp/</link>
+        <link>https://example.com/p/%E4%B8%80%E4%BA%9B%E9%A2%98%E7%9B%AE%E7%9A%84wp/</link>
         <pubDate>Thu, 08 May 2025 00:00:00 +0000</pubDate>
         
-        <guid>/p/%E4%B8%80%E4%BA%9B%E9%A2%98%E7%9B%AE%E7%9A%84wp/</guid>
-        <description>&lt;img src="/p/%E4%B8%80%E4%BA%9B%E9%A2%98%E7%9B%AE%E7%9A%84wp/jJSW57nesemLLWA.thumb.1000_0.jpg" alt="Featured image of post 一些题目的wp" /&gt;&lt;h2 id=&#34;hctf-2018warmup1php&#34;&gt;[HCTF 2018]WarmUp1(php)
+        <guid>https://example.com/p/%E4%B8%80%E4%BA%9B%E9%A2%98%E7%9B%AE%E7%9A%84wp/</guid>
+        <description>&lt;img src="https://example.com/p/%E4%B8%80%E4%BA%9B%E9%A2%98%E7%9B%AE%E7%9A%84wp/jJSW57nesemLLWA.thumb.1000_0.jpg" alt="Featured image of post 一些题目的wp" /&gt;&lt;h2 id=&#34;hctf-2018warmup1php&#34;&gt;[HCTF 2018]WarmUp1(php)
 &lt;/h2&gt;&lt;p&gt;一道php绕过的题目，比较吃代码审计（对我来说≡(▔﹏▔)≡）&lt;/p&gt;
 &lt;p&gt;进入网页，F12发现有个source.php&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/%E4%B8%80%E4%BA%9B%E9%A2%98%E7%9B%AE%E7%9A%84wp/1746710108205.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E4%B8%80%E4%BA%9B%E9%A2%98%E7%9B%AE%E7%9A%84wp/1746710108205.jpg&#34;
 	width=&#34;1604&#34;
 	height=&#34;1268&#34;
-	srcset=&#34;/p/%E4%B8%80%E4%BA%9B%E9%A2%98%E7%9B%AE%E7%9A%84wp/1746710108205_hu_6ccf5bcbb73b28af.jpg 480w, /p/%E4%B8%80%E4%BA%9B%E9%A2%98%E7%9B%AE%E7%9A%84wp/1746710108205_hu_ae338258955aef5d.jpg 1024w&#34;
+	srcset=&#34;https://example.com/p/%E4%B8%80%E4%BA%9B%E9%A2%98%E7%9B%AE%E7%9A%84wp/1746710108205_hu_6ccf5bcbb73b28af.jpg 480w, https://example.com/p/%E4%B8%80%E4%BA%9B%E9%A2%98%E7%9B%AE%E7%9A%84wp/1746710108205_hu_ae338258955aef5d.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -136,10 +136,10 @@
 &lt;/div&gt;&lt;p&gt;根据代码想要得到flag参数就要满足非空，字符串，和checkFile，前面两个天然满足&lt;/p&gt;
 &lt;p&gt;这里注意到还有一个hint.php,访问一下&lt;/p&gt;
 &lt;p&gt;得到这样一句话&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/%E4%B8%80%E4%BA%9B%E9%A2%98%E7%9B%AE%E7%9A%84wp/1746710640924.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E4%B8%80%E4%BA%9B%E9%A2%98%E7%9B%AE%E7%9A%84wp/1746710640924.jpg&#34;
 	width=&#34;515&#34;
 	height=&#34;67&#34;
-	srcset=&#34;/p/%E4%B8%80%E4%BA%9B%E9%A2%98%E7%9B%AE%E7%9A%84wp/1746710640924_hu_eb84ee358fd69bed.jpg 480w, /p/%E4%B8%80%E4%BA%9B%E9%A2%98%E7%9B%AE%E7%9A%84wp/1746710640924_hu_63a28c941a5f87fb.jpg 1024w&#34;
+	srcset=&#34;https://example.com/p/%E4%B8%80%E4%BA%9B%E9%A2%98%E7%9B%AE%E7%9A%84wp/1746710640924_hu_eb84ee358fd69bed.jpg 480w, https://example.com/p/%E4%B8%80%E4%BA%9B%E9%A2%98%E7%9B%AE%E7%9A%84wp/1746710640924_hu_63a28c941a5f87fb.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -151,10 +151,10 @@
 &lt;p&gt;那么可以确定flag在/ffffllllaaaagggg目录下&lt;/p&gt;
 &lt;p&gt;根据代码第一个判断是不满足的，那我们试试第二个，试了一下 &lt;code&gt;?file=source.php?/ffffllllaaaagggg&lt;/code&gt; ，没有结果，猜测在子目录下&lt;/p&gt;
 &lt;p&gt;又试了试 &lt;code&gt;?file=source.php?/../../../../ffffllllaaaagggg&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/%E4%B8%80%E4%BA%9B%E9%A2%98%E7%9B%AE%E7%9A%84wp/1746710920377.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E4%B8%80%E4%BA%9B%E9%A2%98%E7%9B%AE%E7%9A%84wp/1746710920377.jpg&#34;
 	width=&#34;1255&#34;
 	height=&#34;100&#34;
-	srcset=&#34;/p/%E4%B8%80%E4%BA%9B%E9%A2%98%E7%9B%AE%E7%9A%84wp/1746710920377_hu_6df3d65a1c120a0e.jpg 480w, /p/%E4%B8%80%E4%BA%9B%E9%A2%98%E7%9B%AE%E7%9A%84wp/1746710920377_hu_bf38afebad888c33.jpg 1024w&#34;
+	srcset=&#34;https://example.com/p/%E4%B8%80%E4%BA%9B%E9%A2%98%E7%9B%AE%E7%9A%84wp/1746710920377_hu_6df3d65a1c120a0e.jpg 480w, https://example.com/p/%E4%B8%80%E4%BA%9B%E9%A2%98%E7%9B%AE%E7%9A%84wp/1746710920377_hu_bf38afebad888c33.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
