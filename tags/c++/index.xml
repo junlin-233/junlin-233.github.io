@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>C&#43;&#43; on junlin</title>
-        <link>https://example.com/tags/c&#43;&#43;/</link>
+        <link>/tags/c&#43;&#43;/</link>
         <description>Recent content in C&#43;&#43; on junlin</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>junlin</copyright>
-        <lastBuildDate>Tue, 06 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/c++/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 06 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="/tags/c++/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>C&#43;&#43;面向对象</title>
-        <link>https://example.com/p/test-chinese/</link>
+        <link>/p/test-chinese/</link>
         <pubDate>Tue, 06 May 2025 00:00:00 +0000</pubDate>
         
-        <guid>https://example.com/p/test-chinese/</guid>
+        <guid>/p/test-chinese/</guid>
         <description>&lt;h2 id=&#34;关于变量&#34;&gt;关于变量
 &lt;/h2&gt;&lt;p&gt;&lt;strong&gt;常量&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
