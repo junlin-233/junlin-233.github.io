@@ -436,7 +436,7 @@
 </span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">            <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">            <span class="nv">$_page</span> <span class="o">=</span> <span class="nx">urldecode</span><span class="p">(</span><span class="nv">$page</span><span class="p">);</span>  <span class="c1">//解码一次，暂时不知道有什么用
+</span></span><span class="line"><span class="cl">            <span class="nv">$_page</span> <span class="o">=</span> <span class="nx">urldecode</span><span class="p">(</span><span class="nv">$page</span><span class="p">);</span>  <span class="c1">//解码一次
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="nv">$_page</span> <span class="o">=</span> <span class="nx">mb_substr</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">                <span class="nv">$_page</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">                <span class="mi">0</span><span class="p">,</span>
@@ -478,7 +478,7 @@
 	
 ></p>
 <p>那么可以确定flag在/ffffllllaaaagggg目录下</p>
-<p>根据已有的信息试了一下 <code>?file=source.php?/ffffllllaaaagggg</code> ，没有结果，猜测在子目录下</p>
+<p>根据代码第一个判断是不满足的，那我们试试第二个，试了一下 <code>?file=source.php?/ffffllllaaaagggg</code> ，没有结果，猜测在子目录下</p>
 <p>又试了试 <code>?file=source.php?/../../../../ffffllllaaaagggg</code></p>
 <p><img src="/p/%E4%B8%80%E4%BA%9B%E9%A2%98%E7%9B%AE%E7%9A%84wp/1746710920377.jpg"
 	width="1255"
@@ -493,7 +493,7 @@
 	
 ></p>
 <p>成功了</p>
-<p>PS:这道题比较迷的一点就是解码后这一段（26~36）貌似没什么用</p>
+<p>看起来第一个和第三个判断都是干扰项</p>
 <p><a class="link" href="https://buuoj.cn/challenges#[HCTF%202018]WarmUp"  target="_blank" rel="noopener"
     >原题</a></p>
 

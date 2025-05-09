@@ -107,7 +107,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nv&#34;&gt;$_page&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;urldecode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$page&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;//解码一次，暂时不知道有什么用
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nv&#34;&gt;$_page&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;urldecode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$page&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;//解码一次
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;            &lt;span class=&#34;nv&#34;&gt;$_page&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;mb_substr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;nv&#34;&gt;$_page&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
@@ -149,7 +149,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;那么可以确定flag在/ffffllllaaaagggg目录下&lt;/p&gt;
-&lt;p&gt;根据已有的信息试了一下 &lt;code&gt;?file=source.php?/ffffllllaaaagggg&lt;/code&gt; ，没有结果，猜测在子目录下&lt;/p&gt;
+&lt;p&gt;根据代码第一个判断是不满足的，那我们试试第二个，试了一下 &lt;code&gt;?file=source.php?/ffffllllaaaagggg&lt;/code&gt; ，没有结果，猜测在子目录下&lt;/p&gt;
 &lt;p&gt;又试了试 &lt;code&gt;?file=source.php?/../../../../ffffllllaaaagggg&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://example.com/p/%E4%B8%80%E4%BA%9B%E9%A2%98%E7%9B%AE%E7%9A%84wp/1746710920377.jpg&#34;
 	width=&#34;1255&#34;
@@ -164,7 +164,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;成功了&lt;/p&gt;
-&lt;p&gt;PS:这道题比较迷的一点就是解码后这一段（26~36）貌似没什么用&lt;/p&gt;
+&lt;p&gt;看起来第一个和第三个判断都是干扰项&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://buuoj.cn/challenges#[HCTF%202018]WarmUp&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;原题&lt;/a&gt;&lt;/p&gt;
 </description>

@@ -343,6 +343,7 @@
 
 0 === false: bool(false)
 </code></pre>
+<p>ps:在php中 <code>&quot;字符串&quot;==0</code> 是成立的</p>
 <p><strong>输出</strong></p>
 <ul>
 <li>
@@ -400,7 +401,7 @@
 </ul>
 <p>懒人必备^o^/</p>
 <p><strong>函数</strong></p>
-<p>一般来说名字≈功能，所以理解大于记忆</p>
+<p>一般来说名字≈功能，所以理解大于记忆，列几个常见的</p>
 <ul>
 <li>
 <p><code>assert()</code> : 用于调试，检查一个条件是否为 true。</p>
@@ -435,7 +436,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>想要绕过可以在数字前面或者后面加上 <code>%0a %0b %0c %0d %09</code></p>
-<p>例如: <code>$a=&quot;404%0a&quot;</code></p>
+<p>例如: <code>?a=&quot;404%0a&quot;</code></p>
 <p><strong>弱类型比较</strong></p>
 <p><strong>strcmp()</strong></p>
 <p>当 strcmp 比较出错后，会返回 null，null 则为 0 。</p>
@@ -697,7 +698,17 @@
 <pre><code>zip://[压缩文件绝对路径]%23[压缩文件内的子文件名]（#编码为%23）
 </code></pre>
 <p><strong>file://</strong></p>
-<p>和zip一样需要打开_url_,用于访问本地文件系统，在 CTF 中通常用来读取本地文件</p>
+<p>和zip一样需要打开两个_url_,用于访问本地文件系统，在 CTF 中通常用来读取本地文件</p>
+<p><strong>data://</strong></p>
+<p>常用于绕过php://过滤，直接执行PHP代码</p>
+<p>语法：</p>
+<pre><code>data:[&lt;mediatype&gt;][;charset=&lt;encoding&gt;][;base64],&lt;data&gt;
+</code></pre>
+<p>​- mediatype​：数据类型（如text/plain、image/png、text/html）。</p>
+<p>​- charset​：字符编码（如utf-8）。</p>
+<p>​- base64​：若数据需编码则添加此标识。</p>
+<p>​- data​：实际内容（如PHP代码或文件路径）。</p>
+<p>需存在文件包含漏洞(如 <code>include($_GET['file'])</code> )和打开两个_url_</p>
 <h2 id="序列化及反序列化">序列化及反序列化
 </h2><ul>
 <li>
@@ -815,11 +826,13 @@
     >PHP:重载 - Manual</a></p>
 <p>本文参考资料:<a class="link" href="https://hello-ctf.com/home/"  target="_blank" rel="noopener"
     >Hello CTF</a> (其实就是摘抄啦)</p>
-<p><img src="https://wx3.sinaimg.cn/mw1024/008xfgx9gy1hw1bqfxaxtg30cy0cy0wx.gif"
+<p><img src="/0be0a05bffc7420aa292adf31d54bd65.gif"
 	
 	
 	
 	loading="lazy"
+	
+		alt="我的奶龙为什么显示不出来┗|｀O′|┛"
 	
 	
 ></p>
