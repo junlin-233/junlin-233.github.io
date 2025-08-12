@@ -7,7 +7,275 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>junlin</copyright>
-        <lastBuildDate>Tue, 13 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 17 Jul 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>初识Android</title>
+        <link>https://example.com/p/%E5%88%9D%E8%AF%86android/</link>
+        <pubDate>Thu, 17 Jul 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://example.com/p/%E5%88%9D%E8%AF%86android/</guid>
+        <description>&lt;img src="https://example.com/p/%E5%88%9D%E8%AF%86android/duitang_1752738125020.gif" alt="Featured image of post 初识Android" /&gt;&lt;h2 id=&#34;android的系统架构&#34;&gt;Android的系统架构
+&lt;/h2&gt;&lt;p&gt;Android系统分为5层，从高到低分别是应用层、应用框架层、系统运行库层、硬件抽象层和Linux内核层。如图：
+&lt;img src=&#34;https://example.com/p/%E5%88%9D%E8%AF%86android/v2-26f2c9a39060104db63405aa7ddf10b7_1440w.png&#34;
+	width=&#34;1384&#34;
+	height=&#34;2038&#34;
+	srcset=&#34;https://example.com/p/%E5%88%9D%E8%AF%86android/v2-26f2c9a39060104db63405aa7ddf10b7_1440w_hu_bd9ed1177377e743.png 480w, https://example.com/p/%E5%88%9D%E8%AF%86android/v2-26f2c9a39060104db63405aa7ddf10b7_1440w_hu_48b07fb907a6cb58.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;67&#34;
+		data-flex-basis=&#34;162px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;应用层applications&#34;&gt;应用层（Applications）​
+&lt;/h3&gt;&lt;p&gt;用户直接交互的界面，包含系统预装应用（如电话、短信、浏览器）和第三方应用，也就是我们直接接触的界面。&lt;/p&gt;
+&lt;h3 id=&#34;应用框架层application-framework&#34;&gt;应用框架层（Application Framework）​
+&lt;/h3&gt;&lt;p&gt;为开发者提供API接口和核心服务。Android 4大组件，6大布局，api的定义，view等系统定义的原生组件都在这层。&lt;/p&gt;
+&lt;h3 id=&#34;系统运行库层libraries--android-runtime&#34;&gt;系统运行库层（Libraries + Android Runtime）​
+&lt;/h3&gt;&lt;h4 id=&#34;原生cc库&#34;&gt;原生C/C++库​
+&lt;/h4&gt;&lt;p&gt;提供底层功能支持，如图：
+&lt;img src=&#34;https://example.com/p/%E5%88%9D%E8%AF%86android/20250717155456.png&#34;
+	width=&#34;1171&#34;
+	height=&#34;418&#34;
+	srcset=&#34;https://example.com/p/%E5%88%9D%E8%AF%86android/20250717155456_hu_5eb0ae283a016ebf.png 480w, https://example.com/p/%E5%88%9D%E8%AF%86android/20250717155456_hu_e3417f3d7091088.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;280&#34;
+		data-flex-basis=&#34;672px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;android-runtime-art&#34;&gt;Android Runtime (ART)
+&lt;/h4&gt;&lt;p&gt;采用AOT（提前编译）替代Dalvik的JIT（即时编译），提升运行效率。管理应用进程、内存分配及垃圾回收。&lt;/p&gt;
+&lt;p&gt;与 Dalvik 对比：
+&lt;img src=&#34;https://example.com/p/%E5%88%9D%E8%AF%86android/20250717155748.png&#34;
+	width=&#34;1165&#34;
+	height=&#34;297&#34;
+	srcset=&#34;https://example.com/p/%E5%88%9D%E8%AF%86android/20250717155748_hu_217e918f4fac57fd.png 480w, https://example.com/p/%E5%88%9D%E8%AF%86android/20250717155748_hu_232ce5714f71c2d3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;392&#34;
+		data-flex-basis=&#34;941px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;硬件抽象层hal-hardware-abstraction-layer&#34;&gt;硬件抽象层（HAL, Hardware Abstraction Layer）​
+&lt;/h3&gt;&lt;p&gt;硬件抽象层 (HAL) 提供标准界面，向更高级别的 Java API 框架显示设备硬件功能。HAL 包含多个库模块，其中每个模块都为特定类型的硬件组件实现一个界面。当框架 API 要求访问设备硬件时，Android 系统将为该硬件组件加载库模块。厂商会在这层定义自己的HAL接口。HAL运行在用户空间(User Space )，这样的一层就是专门为各个厂商服务，为其设计自己的风格。&lt;/p&gt;
+&lt;h3 id=&#34;linux内核层linux-kernel&#34;&gt;Linux内核层（Linux Kernel）​
+&lt;/h3&gt;&lt;p&gt;Android核心系统服务依赖于Linux内核，包括安全性、内存管理、进程管理、网络协议和驱动模型等。Linux内核也同时作为硬件和软件栈之间的抽象层。&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Android auto</title>
+        <link>https://example.com/p/android-auto/</link>
+        <pubDate>Wed, 16 Jul 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://example.com/p/android-auto/</guid>
+        <description>&lt;img src="https://example.com/p/android-auto/1234.gif" alt="Featured image of post Android auto" /&gt;&lt;h2 id=&#34;android-auto常见漏洞&#34;&gt;Android auto常见漏洞
+&lt;/h2&gt;&lt;p&gt;安卓汽车（Android Auto）的应用程序编程接口（API）允许开发者与信息娱乐系统进行交互。通常，API 设计者会考虑特定的协议或 API 调用序列以确保系统的安全性和可靠性，而攻击者则将利用这些API进行攻击。&lt;/p&gt;
+&lt;h3 id=&#34;外部文件访问检测&#34;&gt;外部文件访问检测
+&lt;/h3&gt;&lt;p&gt;Android的外部存储（如SD卡）对所有应用开放读写权限（除非设置特殊加密），这意味着：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;任何应用都可以读取、修改、删除外部存储中的文件。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;敏感数据（如用户隐私、配置信息、业务逻辑文件）若存储在外部存储，可能被恶意应用篡改、窃取或删除，导致数据泄露或功能异常。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;示例（getDiskCacheDir方法）:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;static&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;File&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getDiskCacheDir&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Context&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;File&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dir&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getExternalCacheDir&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// 尝试获取外部缓存目录&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dir&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;==&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;null&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dir&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getCacheDir&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// 外部存储不可用时，回退到内部缓存&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dir&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;使用-world_writeable&#34;&gt;使用 WORLD_WRITEABLE
+&lt;/h3&gt;&lt;p&gt;当文件以 MODE_WORLD_WRITEABLE 模式创建时，其他应用（无论是否属于同一开发者）均可向该文件写入数据。默认情况下，Android 保护机制强制执行，只有创建内部存储文件的应用才能访问它。但是有些应用确实使用MODE_WORLD_WRITEABLE 或 MODE_WORLD_READABLE 模式来处理 IPC 文件，从而绕过这一限制。&lt;/p&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;File&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;new&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;File&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;getFilesDir&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;filename.ext&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;delete&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;FileOutputStream&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fos&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;openFileOutput&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;filename.ext&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Context&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;MODE_WORLD_WRITEABLE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// 以全局可写模式创建同名文件（高危操作）&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fos&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;close&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;File&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;new&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;File&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;getFilesDir&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;filename.ext&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;密钥库风险&#34;&gt;密钥库风险
+&lt;/h3&gt;&lt;p&gt;密钥可以存放在密钥库中，并使用密码保护。然而，这并不能保护在已遭 root 攻击的系统中被监控用户输入密码时的数据。&lt;/p&gt;
+&lt;p&gt;​&lt;strong&gt;PasswordProtection()被污染&lt;/strong&gt;:
+攻击者可以修改此构造函数的行为，使其接受空密码或任意密码&lt;/p&gt;
+&lt;p&gt;​&lt;strong&gt;getPrivateKey()被污染&lt;/strong&gt;:
+此方法本应返回KeyStore中存储的真实私钥。若被污染，可返回攻击者控制的伪造私钥&lt;/p&gt;
+&lt;p&gt;​&lt;strong&gt;load()被污染&lt;/strong&gt;:
+若被污染，可加载包含恶意条目的密钥库或在加载过程中窃取密码&lt;/p&gt;
+&lt;h3 id=&#34;内容提供者&#34;&gt;内容提供者
+&lt;/h3&gt;&lt;p&gt;内容提供者是Android四大组件之一，用于在不同应用间共享数据（如数据库、文件等），是一种结构化存储机制。其默认行为由android:exported属性控制，决定是否允许其他应用访问。但是在一些场景中，该权限可以被动态添加：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;PermissionInfo&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;permissionInfo&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;new&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;PermissionInfo&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;permissionInfo&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;com.example.plugin.MY_UNIQUE_PERMISSION&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// 权限唯一标识&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;permissionInfo&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;labelRes&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;permission_risk_warning&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// 权限描述（必须清晰告知风险）&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;permissionInfo&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;protectionLevel&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;PermissionInfo&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;PROTECTION_SIGNATURE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// 保护级别设为签名级&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;permissionInfo&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;description&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;允许插件访问宿主核心功能，仅限授权应用使用&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// 详细描述&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;PackageManager&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;packageManager&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;getApplicationContext&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getPackageManager&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;packageManager&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;addPermission&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;permissionInfo&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;webview&#34;&gt;WebView
+&lt;/h3&gt;&lt;p&gt;WebView 是 Android/iOS 等移动操作系统中内置的浏览器组件，允许应用内嵌网页内容，实现混合开发（Hybrid App）。在 WebView 中，启用 JavaScript 意味着它现在容易受到 XSS 攻击。如果使用，则应仅向所有输入都值得信赖的网页暴露 addJavaScriptInterface()。&lt;/p&gt;
+&lt;h3 id=&#34;gps-位置检测器&#34;&gt;GPS 位置检测器
+&lt;/h3&gt;&lt;p&gt;WebChromeClient.onGeolocationPermissionsShowPrompt()方法来获取向 JavaScript 披露用户位置的权限。&lt;/p&gt;
+&lt;h2 id=&#34;android-auto-静态分析器&#34;&gt;Android auto 静态分析器
+&lt;/h2&gt;&lt;p&gt;使用抽象解释来分析和验证Java字节码&lt;/p&gt;
+&lt;h3 id=&#34;系统架构&#34;&gt;系统架构
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/p/android-auto/121.png&#34;
+	width=&#34;530&#34;
+	height=&#34;238&#34;
+	srcset=&#34;https://example.com/p/android-auto/121_hu_311a32cee58eae93.png 480w, https://example.com/p/android-auto/121_hu_8c8a07071d083615.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;222&#34;
+		data-flex-basis=&#34;534px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;具体流程&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;1.应用获取与拆解​：提取APK中的代码（JAR）和配置文件（Manifest）。&lt;/p&gt;
+&lt;p&gt;​2.逆向工程​：反编译代码生成结构化字节码，还原应用逻辑。
+​&lt;/p&gt;
+&lt;p&gt;3.配置分析​：解析Manifest获取权限、组件等安全敏感配置。
+​&lt;/p&gt;
+&lt;p&gt;4.自动化分析​：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Android Auto Analyzer提炼配置层风险（如过度声明的权限）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;污点分析结合代码逻辑，追踪敏感数据在程序中的流动路径。
+​&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;5.漏洞判定​：通过两者的分析结果，识别如“权限滥用+数据未脱敏”“组件暴露+敏感操作无校验”等复合安全问题。&lt;/p&gt;
+&lt;h3 id=&#34;入口点的定位逻辑&#34;&gt;入口点的定位逻辑
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;1. 静态分析入口点的普遍性与Android特殊性&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;普通Java应用的入口点：Julia库（通用静态分析工具）从main方法开始分析，因为Java程序通常有明确的程序入口。&lt;/p&gt;
+&lt;p&gt;Android应用的复杂性：&lt;/p&gt;
+&lt;p&gt;• Android程序通过事件处理器（如Activity、Service、BroadcastReceiver等）响应用户交互或系统事件，这些处理器可能被反射机制动态调用，无法通过单一固定的入口（如main方法）覆盖所有逻辑。&lt;/p&gt;
+&lt;p&gt;• 关键信息分散在AndroidManifest.xml（声明组件）和运行时展开的XML文件（如布局文件定义的UI事件）中，需结合两者确定入口点。&lt;/p&gt;
+&lt;p&gt;Android Auto的特殊需求：&lt;/p&gt;
+&lt;p&gt;• 聚焦媒体浏览（音频播放）和消息服务（通信功能），这两类是Android Auto的核心场景，需精准定位相关组件以避免分析遗漏。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2. 入口点定位的具体策略&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;（1）基于清单文件（AndroidManifest.xml）的全局扫描&lt;/p&gt;
+&lt;p&gt;所有Android组件（Activity、Service等）必须在清单文件中声明，分析器首先解析清单文件，提取以下信息：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;MediaBrowser服务：搜索声明android.media.browse.MediaBrowserService服务的类（如图中“android.media.browse.MediaBrowserService”）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;消息服务：筛选继承自BroadcastReceiver的接收器类（因Android Auto规范要求消息发送/接收类必须扩展此类）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;（2）运行时XML文件的动态补充&lt;/p&gt;
+&lt;p&gt;布局文件（XML）中定义的UI控件（如按钮点击事件）可能关联事件处理器，需解析此类文件以补充反射调用或隐式注册的入口点。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/android-auto/321.png&#34;
+	width=&#34;931&#34;
+	height=&#34;447&#34;
+	srcset=&#34;https://example.com/p/android-auto/321_hu_78fee826db789d31.png 480w, https://example.com/p/android-auto/321_hu_d22a3219c8928de5.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;208&#34;
+		data-flex-basis=&#34;499px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;示例图&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;漏洞检测的工作原理&#34;&gt;漏洞检测的工作原理
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/p/android-auto/131.png&#34;
+	width=&#34;530&#34;
+	height=&#34;434&#34;
+	srcset=&#34;https://example.com/p/android-auto/131_hu_4c2b0e3fff9e91bb.png 480w, https://example.com/p/android-auto/131_hu_a205cd4eed968a70.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;122&#34;
+		data-flex-basis=&#34;293px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;具体流程&lt;/strong&gt;：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;开始（START）&lt;br&gt;
+流程起点，准备启动漏洞检测逻辑。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;搜索中间代码（Search in the Intermediate Code）&lt;br&gt;
+第一步是在编译后的中间代码（如Java字节码、LLVM IR等）中扫描，寻找可能存在漏洞的代码片段（如不安全的函数调用、未验证的输入处理等）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;检测漏洞实现（Vulnerable implementation Detected?）&lt;br&gt;
+• NO：未检测到漏洞，返回“搜索中间代码”步骤，继续扫描剩余代码（形成循环，直到遍历所有代码）。&lt;/p&gt;
+&lt;p&gt;• YES：检测到潜在漏洞实现，进入下一步分析。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;访问JVM堆栈（Access JVM Stack）&lt;br&gt;
+获取当前漏洞代码在JVM运行时的调用栈信息，用于分析调用上下文（如调用参数、调用链路径等）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;判断调用参数类型（Called with constant arguments?）&lt;br&gt;
+检查漏洞函数是否使用常量参数调用：&lt;br&gt;
+• YES：漏洞触发条件明确（参数固定），可直接进入处理流程。&lt;/p&gt;
+&lt;p&gt;• NO：参数可能动态变化（如用户输入、变量传递），需进一步分析所有可能的调用场景。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;处理并抛出警告（Process and Throw Warning）&lt;br&gt;
+当漏洞以常量参数调用时，直接生成警告信息（如漏洞类型、位置、风险等级），输出给开发者或集成到开发工具中。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;获取所有贡献者（Get all Contributors）&lt;br&gt;
+若参数非固定值，需收集所有可能导致漏洞的调用路径或代码模块（“贡献者”可能指代调用链中的相关函数、类或输入源），以便全面分析。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;检查漏洞检查完成状态（All Possible Vulnerabilities Checked?）&lt;br&gt;
+• YES：所有可能的漏洞场景已分析完毕，流程结束。&lt;/p&gt;
+&lt;p&gt;• NO：存在未覆盖的调用路径或潜在漏洞场景，返回“访问JVM堆栈”步骤，重新分析其他可能的调用上下文（形成循环，确保全面性）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        <item>
         <title>SQL注入</title>
         <link>https://example.com/p/sql%E6%B3%A8%E5%85%A5/</link>
         <pubDate>Tue, 13 May 2025 00:00:00 +0000</pubDate>
@@ -787,7 +1055,7 @@
 &lt;pre&gt;&lt;code&gt;zip://[压缩文件绝对路径]%23[压缩文件内的子文件名]（#编码为%23）
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;strong&gt;file://&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;和zip一样需要打开两个_url_,用于访问本地文件系统，在 CTF 中通常用来读取本地文件&lt;/p&gt;
+&lt;p&gt;用于访问本地文件系统，在 CTF 中通常用来读取本地文件&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;data://&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;常用于绕过php://过滤，直接执行PHP代码&lt;/p&gt;
 &lt;p&gt;语法：&lt;/p&gt;

@@ -376,7 +376,7 @@
 &lt;pre&gt;&lt;code&gt;zip://[压缩文件绝对路径]%23[压缩文件内的子文件名]（#编码为%23）
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;strong&gt;file://&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;和zip一样需要打开两个_url_,用于访问本地文件系统，在 CTF 中通常用来读取本地文件&lt;/p&gt;
+&lt;p&gt;用于访问本地文件系统，在 CTF 中通常用来读取本地文件&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;data://&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;常用于绕过php://过滤，直接执行PHP代码&lt;/p&gt;
 &lt;p&gt;语法：&lt;/p&gt;
