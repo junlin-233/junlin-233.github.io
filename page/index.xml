@@ -21,8 +21,7 @@
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>https://example.com/links/</guid>
-        <description>&lt;p&gt;大佬们的博客&lt;/p&gt;
-</description>
+        <description></description>
         </item>
         <item>
         <title>关于</title>
@@ -30,21 +29,9 @@
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>https://example.com/%E5%85%B3%E4%BA%8E/</guid>
-        <description>&lt;p&gt;以后再说&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/%E5%85%B3%E4%BA%8E/20200310074135_kssvs.gif&#34;
-	width=&#34;400&#34;
-	height=&#34;366&#34;
-	srcset=&#34;https://example.com/%E5%85%B3%E4%BA%8E/20200310074135_kssvs_hu_34738a2acc965aa8.gif 480w, https://example.com/%E5%85%B3%E4%BA%8E/20200310074135_kssvs_hu_8cb58582833273d5.gif 1024w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;放只修狗&#34;
-	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;109&#34;
-		data-flex-basis=&#34;262px&#34;
-	
-&gt;&lt;/p&gt;
+        <description>&lt;p&gt;中大网安大二在读&lt;/p&gt;
+&lt;p&gt;一个不是很厉害的re手&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;patience is key in life&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
