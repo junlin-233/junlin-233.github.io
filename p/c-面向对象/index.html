@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="一点点简单的归纳">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="一点点简单的归纳（荒废半年重新拾起版）">
 <title>C&#43;&#43;面向对象</title>
 
 <link rel='canonical' href='https://example.com/p/c-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/'>
 
 <link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="C++面向对象">
-<meta property='og:description' content="一点点简单的归纳">
+<meta property='og:description' content="一点点简单的归纳（荒废半年重新拾起版）">
 <meta property='og:url' content='https://example.com/p/c-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/'>
 <meta property='og:site_name' content='junlin'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='编程语言' /><meta property='article:tag' content='c&#43;&#43;' /><meta property='article:published_time' content='2025-05-06T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-05-06T00:00:00&#43;00:00'/><meta property='og:image' content='https://example.com/p/c-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/preview.gif' />
 <meta name="twitter:title" content="C++面向对象">
-<meta name="twitter:description" content="一点点简单的归纳"><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="一点点简单的归纳（荒废半年重新拾起版）"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://example.com/p/c-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/preview.gif' />
     </head>
     <body class="
@@ -252,6 +252,32 @@
         <li><a href="#流运算符重载">流运算符重载</a></li>
       </ol>
     </li>
+    <li><a href="#虚函数">虚函数</a>
+      <ol>
+        <li><a href="#多态">多态</a></li>
+        <li><a href="#抽象接口纯虚函数">抽象接口（纯虚函数）</a></li>
+        <li><a href="#正确的析构函数调用">正确的析构函数调用</a></li>
+      </ol>
+    </li>
+    <li><a href="#哈希表">哈希表</a>
+      <ol>
+        <li><a href="#stdunordered_set--集合">std::unordered_set  <strong>(集合)</strong></a></li>
+        <li><a href="#stdunordered_map--键值对映射">std::unordered_map  <strong>(键值对映射)</strong></a></li>
+      </ol>
+    </li>
+    <li><a href="#一些小tips">一些小tips</a>
+      <ol>
+        <li><a href="#读取输入">读取输入</a></li>
+      </ol>
+    </li>
+    <li><a href="#内存分区">内存分区</a>
+      <ol>
+        <li><a href="#栈区stack">栈区（Stack）</a></li>
+        <li><a href="#堆区heap">堆区（Heap）</a></li>
+        <li><a href="#数据区data-segment">数据区（Data Segment）</a></li>
+        <li><a href="#代码区codetext-segment">代码区（Code/Text Segment）</a></li>
+      </ol>
+    </li>
   </ol>
 </nav>
         </div>
@@ -300,7 +326,7 @@
     
         
         <h3 class="article-subtitle">
-            一点点简单的归纳
+            一点点简单的归纳（荒废半年重新拾起版）
         </h3>
         
     </div>
@@ -336,7 +362,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 3 分钟
+                    阅读时长: 8 分钟
                 </time>
             </div>
         
@@ -386,8 +412,8 @@
 </div><hr>
 <h2 id="关于类">关于类
 </h2><p>-C++ 中 class 和 struct 并无本质区别，只是默认的访问权限不同（class 默认 private，struct 默认 public）</p>
-<p>-:: 称为域解析器（resolver），前面什么都不带则解析到自由变量 / 函数（即全局作用域内）</p>
-<p>-成员函数直接在类内部定义的话默认为 inline（不推荐）</p>
+<p>:: 称为域解析器（resolver），前面什么都不带则解析到自由变量 / 函数（即全局作用域内）</p>
+<p>成员函数直接在类内部定义的话默认为 inline（不推荐）</p>
 <p>权限有三种：</p>
 <pre><code>     public：公有
 
@@ -596,7 +622,462 @@
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span></code></pre></td></tr></table>
 </div>
+</div><hr>
+<h2 id="虚函数">虚函数
+</h2><p>学的时候感觉挺简单的，好久不用搞忘了，还是写点笔记吧。</p>
+<p>虚函数主要提供 <strong>运行时多态</strong>，它让 C++ 程序能够根据对象的实际类型来调用函数，而不是根据指针/引用的静态类型。</p>
+<p>换句话说：</p>
+<ul>
+<li>
+<p>普通函数 → <strong>编译期绑定</strong>（函数地址在编译阶段就决定了）。</p>
+</li>
+<li>
+<p>虚函数 → <strong>运行期绑定</strong>（函数地址在运行时通过虚函数表查找）。</p>
+</li>
+</ul>
+<p>这样，我们可以写出通用接口，在不同子类里实现不同的行为。</p>
+<h3 id="多态">多态
+</h3><p>比如基类 Shape 定义 <code>draw()</code>，不同子类（<code>Circle</code>、<code>Rectangle</code>）都可以重写自己的 <code>draw()</code>，运行时调用时自动选择正确的函数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Shape</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">draw</span><span class="p">()</span> <span class="p">{</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Draw Shape</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Circle</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Shape</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">draw</span><span class="p">()</span> <span class="k">override</span> <span class="p">{</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Draw Circle</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span> <span class="p">}</span> <span class="c1">//override用来标记“派生类中的虚函数是对基类虚函数的重写”
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Rectangle</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Shape</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">draw</span><span class="p">()</span> <span class="k">override</span> <span class="p">{</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Draw Rectangle</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Shape</span><span class="o">*</span> <span class="n">s1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Circle</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Shape</span><span class="o">*</span> <span class="n">s2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Rectangle</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">s1</span><span class="o">-&gt;</span><span class="n">draw</span><span class="p">();</span>  <span class="c1">// Draw Circle
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">s2</span><span class="o">-&gt;</span><span class="n">draw</span><span class="p">();</span>  <span class="c1">// Draw Rectangle
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="k">delete</span> <span class="n">s1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">delete</span> <span class="n">s2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
+</div><h3 id="抽象接口纯虚函数">抽象接口（纯虚函数）
+</h3><p>虚函数可以被定义为 <strong>纯虚函数</strong>（<code>=0</code>），使类变为 <strong>抽象类</strong>，只能作为接口存在，不能直接实例化。
+派生类必须实现纯虚函数。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Animal</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">speak</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>  <span class="c1">// 纯虚函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Dog</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Animal</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">speak</span><span class="p">()</span> <span class="k">override</span> <span class="p">{</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Woof!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="正确的析构函数调用">正确的析构函数调用
+</h3><p>如果基类的析构函数是虚函数，那么通过基类指针删除派生类对象时，会 <strong>先调用派生类析构，再调用基类析构</strong> ，避免资源泄漏。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Base</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">virtual</span> <span class="o">~</span><span class="n">Base</span><span class="p">()</span> <span class="p">{</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Base destroyed</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Derived</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Base</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="o">~</span><span class="n">Derived</span><span class="p">()</span> <span class="p">{</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Derived destroyed</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Base</span><span class="o">*</span> <span class="n">b</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Derived</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">delete</span> <span class="n">b</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果析构函数不是虚函数，只会调用 <code>Base::~Base</code>，导致 <code>Derived</code> 部分资源泄露。</p>
+<hr>
+<h2 id="哈希表">哈希表
+</h2><p>严格意义上来说不算c++的版块，但是刷题的时候碰到了，就顺便记一下。</p>
+<p>哈希表是一种根据关键字直接访问内存存储位置的数据结构。通过哈希表，数据元素的存放位置和数据元素的关键字之间建立起某种对应关系，建立这种对应关系的函数称为哈希函数。</p>
+<p>哈希表通常使用一个数组作为底层存储，数组的每个元素称为一个<strong>桶（bucket）</strong>，它的核心思想是 <strong>用空间换时间</strong>,所以它的 插入、删除、查找操作的平均时间复杂度都是 O(1)。在实际应用中，C++ STL 提供的 <code>std::unordered_map</code> 和 <code>std::unordered_set</code> 已经实现了高效、健壮的哈希表，通常不需要我们自己去实现。</p>
+<p>简单一点的实现是：</p>
+<h3 id="stdunordered_set--集合">std::unordered_set  <strong>(集合)</strong>
+</h3><p>用于快速查找一个元素是否存在。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;unordered_set&gt;</span><span class="cp"> </span><span class="c1">// 引入unordered_set
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 1. 创建一个空的 unordered_set，存储字符
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span> <span class="n">brokenSet</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 2. 插入元素 (相当于添加学号)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">brokenSet</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="sc">&#39;a&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">brokenSet</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="sc">&#39;b&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">brokenSet</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="sc">&#39;c&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">brokenSet</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="sc">&#39;a&#39;</span><span class="p">);</span> <span class="c1">// 重复插入 &#39;a&#39;，但 set 只会保留一个 &#39;a&#39;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 3. 检查元素是否存在
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">char</span> <span class="n">letterToFind</span> <span class="o">=</span> <span class="sc">&#39;b&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">brokenSet</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="n">letterToFind</span><span class="p">))</span> <span class="p">{</span> <span class="c1">// count() 返回 1 如果存在, 0 如果不存在
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;&#39;&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">letterToFind</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;&#39; 存在于集合中。&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;&#39;&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">letterToFind</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;&#39; 不存在于集合中。&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">letterToFind</span> <span class="o">=</span> <span class="sc">&#39;d&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">brokenSet</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="n">letterToFind</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;&#39;&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">letterToFind</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;&#39; 存在于集合中。&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;&#39;&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">letterToFind</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;&#39; 不存在于集合中。&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// 4. 用一个字符串初始化 set
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">brokenLetters</span> <span class="o">=</span> <span class="s">&#34;xyz&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span> <span class="n">brokenSetFromString</span><span class="p">(</span><span class="n">brokenLetters</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">brokenLetters</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">brokenSetFromString</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="sc">&#39;y&#39;</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;&#39;y&#39; 存在于从字符串创建的集合中。&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="stdunordered_map--键值对映射">std::unordered_map  <strong>(键值对映射)</strong>
+</h3><p>用于根据一个键快速查找对应的值。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;unordered_map&gt;</span><span class="cp"> </span><span class="c1">// 引入unordered_map
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 1. 创建一个空的 unordered_map，存储 string 到 int 的映射
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">studentScores</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 2. 插入键值对
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">studentScores</span><span class="p">.</span><span class="n">insert</span><span class="p">({</span><span class="s">&#34;Alice&#34;</span><span class="p">,</span> <span class="mi">95</span><span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="n">studentScores</span><span class="p">[</span><span class="s">&#34;Bob&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">88</span><span class="p">;</span> <span class="c1">// 另一种插入方式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">studentScores</span><span class="p">[</span><span class="s">&#34;Charlie&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">92</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// 3. 通过键查找值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">studentName</span> <span class="o">=</span> <span class="s">&#34;Alice&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 使用 find() 查找，它返回一个迭代器
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">auto</span> <span class="n">it</span> <span class="o">=</span> <span class="n">studentScores</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">studentName</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">it</span> <span class="o">!=</span> <span class="n">studentScores</span><span class="p">.</span><span class="n">end</span><span class="p">())</span> <span class="p">{</span> <span class="c1">// 如果找到了 (迭代器不是指向末尾)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">studentName</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; 的分数是: &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">it</span><span class="o">-&gt;</span><span class="n">second</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span> <span class="c1">// it-&gt;second 是值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">studentName</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; 不存在。&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">studentName</span> <span class="o">=</span> <span class="s">&#34;David&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">studentScores</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">studentName</span><span class="p">)</span> <span class="o">!=</span> <span class="n">studentScores</span><span class="p">.</span><span class="n">end</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">studentName</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; 的分数是: &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">studentScores</span><span class="p">[</span><span class="n">studentName</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span> <span class="c1">// studentName.score 也可以直接访问
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">studentName</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; 不存在。&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 4. 尝试访问不存在的键（如果用 [] 访问）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// 注意：如果键不存在，[] 会自动创建一个键值对，值是默认初始化的（int是0）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// std::cout &lt;&lt; &#34;David 的分数 (创建后): &#34; &lt;&lt; studentScores[&#34;David&#34;] &lt;&lt; std::endl; // 这行会使 David 出现，分数为 0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="一些小tips">一些小tips
+</h2><p>实在没招了，不记要忘。。。</p>
+<h3 id="读取输入">读取输入
+</h3><p>一般来说读取字符串用 <code>getline()</code> 就行，如果想要读到一个整型数组，还需要进行输入流处理。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;sstream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">string</span> <span class="n">line</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">getline</span><span class="p">(</span><span class="n">cin</span><span class="p">,</span> <span class="n">line</span><span class="p">);</span>   <span class="c1">// 读取一整行，例如：2 3 1 4 5 6
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="n">istringstream</span> <span class="n">iss</span><span class="p">(</span><span class="n">line</span><span class="p">);</span>  <span class="c1">// 把字符串当作输入流来处理
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">nums</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="n">iss</span> <span class="o">&gt;&gt;</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>    <span class="c1">// 跳过空格等分隔符取整数，直到取完
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">nums</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 测试输出
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;输入的数组: &#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="nl">n</span> <span class="p">:</span> <span class="n">nums</span><span class="p">)</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; &#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="内存分区">内存分区
+</h2><p>在 C++ 中，<strong>内存分区</strong>是绕不开的核心概念之一。通常情况下，程序的内存空间会被划分为四个主要区域（由低地址到高地址）：</p>
+<ol>
+<li><strong>代码区</strong></li>
+<li><strong>数据区</strong></li>
+<li><strong>堆区</strong></li>
+<li><strong>栈区</strong></li>
+</ol>
+<hr>
+<h3 id="栈区stack">栈区（Stack）
+</h3><ul>
+<li><strong>分配方式</strong>：由程序自动向操作系统申请和回收，速度快、使用方便，但程序员无法直接控制。</li>
+<li><strong>空间大小</strong>：一般在几 MB ~ 几十 MB。若递归过深或数组过大，可能触发 <strong>栈溢出（stack overflow）</strong>。</li>
+<li><strong>遵循原则</strong>：后进先出（LIFO）。</li>
+</ul>
+<p><strong>存储内容包括</strong>：</p>
+<ol>
+<li><code>const</code> 局部变量</li>
+<li>函数参数</li>
+<li>函数返回地址</li>
+<li>保存的寄存器（如返回地址、帧指针等）</li>
+</ol>
+<p><strong>生命周期管理</strong>：
+当变量进入作用域时，系统会在栈上为其申请空间；当变量生命周期结束，系统会自动释放这部分内存。</p>
+<hr>
+<h3 id="堆区heap">堆区（Heap）
+</h3><ul>
+<li><strong>分配方式</strong>：由程序员手动申请（如 <code>new</code>、<code>malloc</code>），并且需要手动释放（<code>delete</code>、<code>free</code>）。</li>
+<li><strong>空间大小</strong>：通常远大于栈，可达 MB ~ GB 级，一般是能申请多少就有多少，实际可用大小取决于操作系统和物理内存。</li>
+<li><strong>存储结构</strong>：不像栈是连续空间，堆的分配通过 <strong>链表/空闲块表</strong> 管理，因此可能产生 <strong>内存碎片</strong>。</li>
+</ul>
+<p>如果忘记释放，容易导致 <strong>内存泄漏</strong>。</p>
+<hr>
+<h3 id="数据区data-segment">数据区（Data Segment）
+</h3><p>分为两部分：</p>
+<ol>
+<li>
+<p><strong>已初始化数据区</strong>
+存放 <strong>已显式初始化</strong> 的全局变量和静态变量。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">g1</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>       <span class="c1">// 已初始化全局变量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">static</span> <span class="kt">int</span> <span class="n">s1</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="c1">// 已初始化静态变量
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>未初始化数据区（BSS 段）</strong>
+存放 <strong>未初始化</strong> 的全局变量和静态变量，程序运行时会自动初始化为 <code>0</code>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">g2</span><span class="p">;</span>          <span class="c1">// 未初始化全局变量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">static</span> <span class="kt">int</span> <span class="n">s2</span><span class="p">;</span>   <span class="c1">// 未初始化静态变量
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h3 id="代码区codetext-segment">代码区（Code/Text Segment）
+</h3><ul>
+<li><strong>存放内容</strong>：程序的可执行代码（机器指令）。</li>
+<li><strong>只读属性</strong>：大多数系统中，代码区是只读的，防止程序意外修改自身指令。</li>
+<li><strong>共享机制</strong>：相同程序的多个进程可以共享代码区，提高效率。</li>
+</ul>
+<p>💡 关于 <strong>常量</strong>：
+有些实现会将只读常量放在单独的常量区（位于代码区和数据区之间）；也有实现直接把常量划归到代码区。无论哪种方式，常量区都是只读的。</p>
+<hr>
+<p>示例图：</p>
+<img src="111.png" alt="示意图" width="800"/>
+<p><a class="link" href="https://juejin.cn/post/7023663719678738445"  target="_blank" rel="noopener"
+    >内存参考链接</a></p>
+<hr>
+
 </section>
 
 
