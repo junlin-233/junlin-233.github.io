@@ -1,1 +1,1 @@
-"# Initial commit" 
+"一个简单的blog" 
